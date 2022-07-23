@@ -1,12 +1,12 @@
 
-// random number between 0 - 2 to represent rock, paper, and scissor
+// Generates random number between 0 - 2 to represent rock, paper, and scissor
 function getComputerChoice() {
     const options = ['rock', 'paper', 'scissor'];
     let choice = Math.floor(Math.random() * 3);
     return options[choice];
 }
 
-// ask user for choice prompt
+// User prompt will determine choice
 function getPlayerChoice() {
     let choice = prompt("Dr.Evel & his minions has challenge you to a battle! Pick your weapon: rock, paper, or scissor?").toLowerCase()
 
@@ -20,7 +20,7 @@ function getPlayerChoice() {
 let player_score = 0;
 let computer_score = 0;
 
-// decides the winner base on the two choices
+// decides the winner base on the two choices 
 function playRound(computerChoice, playerChoice) {
     console.log("Dr.Evel chooses: " + computerChoice);
     switch (computerChoice) {
@@ -59,7 +59,7 @@ function playRound(computerChoice, playerChoice) {
     }
 }
 
-//Plays 5 rounds & determine the winner
+//Plays 5 rounds to determine the winner & keeps tab of score
 function game() {
     for(let i = 0; i < 5; i++) {
         console.log("~SCORE~ You: " + player_score +  " Dr.Evel: " + computer_score);
@@ -75,7 +75,6 @@ function game() {
     }
 }
 
-//start game!
 game();
 
 
