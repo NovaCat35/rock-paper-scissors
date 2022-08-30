@@ -1,3 +1,8 @@
+let playerWins = 0;
+let computerWins = 0;
+let buttons = document.querySelectorAll('button');
+
+
 // Generates random number between 0 - 2 to represent rock, paper, and scissor
 function getComputerChoice() {
     const options = ['rock', 'paper', 'scissor'];
@@ -14,8 +19,14 @@ function getPlayerChoice(e) {
     return choice;
 }
 
-let playerWins = 0;
-let computerWins = 0;
+function disableButtons() {
+    buttons.forEach(button => button.disabled = true)
+}
+
+function rematch() {
+
+}
+
 
 // decides the winner base on the two choices 
 function playRound(e) {
@@ -66,24 +77,25 @@ function playRound(e) {
     compScore.innerText = computerWins;
     
     if(playerWins == 5 || computerWins == 5) {
+        let rematchButton = document.createElement('button');
+        rematchButton.innerText = "REMATCH?"
+        rematchButton.addEventListener('click', rematch);
+        document.body.appendChild(rematchButton);
+
+        disableButtons();
+
         if(playerWins == 5) {
-            result.innerText = "YOU WON! The match fills you with determination to keep moving forward!"
+            result.innerText = "YOU WON! \n The match fills you with determination to keep moving forward!"
         } else {
-            result.innerText = "Dr.Fluffball WINS! Just like any setback like in life, we must keep moving forward!"
+            result.innerText = "Dr.Fluffball WINS! \n Just like any setback like in life, we must keep moving forward!"
         }
     }
 }
 
 //Plays 5 rounds to determine the winner & keeps tab of score
 function game() {
-    // for(let i = 0; i < 5; i++) {
-    //     console.log("~SCORE~ You: " + player_score +  " Dr.Fluffball: " + computer_score);
-    //     console.log(playRound(getComputerChoice(), getPlayerChoice()));
-    // }
-    // while(playerWins != 5 || computerWins != 5) {
-        let buttons = Array.from(document.querySelectorAll('button'));
-        buttons.forEach(button => button.addEventListener('click', playRound));
-    // }
+
+    buttons.forEach(button => button.addEventListener('click', playRound));
 
 
     // if (playerWins < computerWins) {
