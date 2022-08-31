@@ -1,0 +1,9 @@
+.scoreboard {
+    display: flex;
+    justify-content: space-around;
+}
+
+.choices {
+    display: flex;
+    justify-content: space-around;
+}

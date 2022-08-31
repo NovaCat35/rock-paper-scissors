@@ -1,30 +1,47 @@
 let playerWins = 0;
 let computerWins = 0;
+
+let playerScore = document.querySelector('.playerScore');
+let compScore = document.querySelector('.compScore');
+let result = document.querySelector('.result');
 let buttons = document.querySelectorAll('button');
+let compChoice = document.querySelector('.compChoice');
+let playerChoice = document.querySelector('.playerChoice');
 
 
 // Generates random number between 0 - 2 to represent rock, paper, and scissor
 function getComputerChoice() {
     const options = ['rock', 'paper', 'scissor'];
     let choice = Math.floor(Math.random() * 3);
-    document.querySelector('.compChoice').innerText = `Dr.Fluffball chooses ${options[choice].toUpperCase()} !!`;
+    compChoice.innerText = `Dr.Fluffball chooses ${options[choice].toUpperCase()} !!`;
 
     return options[choice];
 }
 
 function getPlayerChoice(e) {
     let choice = e.target.id;
-    document.querySelector('.playerChoice').innerText = `You choose ${choice.toUpperCase()}!!`
+    playerChoice.innerText = `You choose ${choice.toUpperCase()}!!`
 
     return choice;
 }
 
 function disableButtons() {
-    buttons.forEach(button => button.disabled = true)
+    buttons.forEach(button => button.disabled = true);
+}
+function activateButtons() {
+    buttons.forEach(button => button.disabled = false);
 }
 
 function rematch() {
+    playerWins = 0;
+    computerWins = 0;
+    playerScore.innerText = playerWins;
+    compScore.innerText = computerWins;
 
+    result.innerText = "";
+    compChoice.innerText = "";
+    playerChoice.innerText = "";
+    activateButtons();
 }
 
 
@@ -32,10 +49,6 @@ function rematch() {
 function playRound(e) {
     let playerChoice = getPlayerChoice(e);
     let computerChoice = getComputerChoice();
-
-    let result = document.querySelector('.result');
-    let playerScore = document.querySelector('.playerScore');
-    let compScore = document.querySelector('.compScore');
 
     switch (computerChoice) {
         case 'rock':
