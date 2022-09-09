@@ -4,9 +4,13 @@ let computerWins = 0;
 let playerScore = document.querySelector('.playerScore');
 let compScore = document.querySelector('.compScore');
 let result = document.querySelector('.result');
-let buttons = document.querySelectorAll('button');
+let buttons = document.querySelectorAll('.card-back');
 let compChoice = document.querySelector('.compChoice');
 let playerChoice = document.querySelector('.playerChoice');
+
+let rematchButton = document.createElement('button');
+rematchButton.innerText = "REMATCH?"
+rematchButton.addEventListener('click', rematch);
 
 
 // Generates random number between 0 - 2 to represent rock, paper, and scissor
@@ -20,16 +24,20 @@ function getComputerChoice() {
 
 function getPlayerChoice(e) {
     let choice = e.target.id;
+    console.log(e.target);
     playerChoice.innerText = `You choose ${choice.toUpperCase()}!!`
 
     return choice;
 }
 
 function disableButtons() {
-    buttons.forEach(button => button.disabled = true);
+    // buttons.forEach(button => button.disabled = true);
+    buttons.forEach(button => button.classList.toggle('disable-div'));
 }
 function activateButtons() {
-    buttons.forEach(button => button.disabled = false);
+    // buttons.forEach(button => button.disabled = false);
+    buttons.forEach(button => button.classList.toggle('disable-div'));
+    result.removeChild(rematchButton);
 }
 
 function rematch() {
@@ -90,34 +98,19 @@ function playRound(e) {
     compScore.innerText = computerWins;
     
     if(playerWins == 5 || computerWins == 5) {
-        let rematchButton = document.createElement('button');
-        rematchButton.innerText = "REMATCH?"
-        rematchButton.addEventListener('click', rematch);
-        document.body.appendChild(rematchButton);
-
         disableButtons();
 
         if(playerWins == 5) {
             result.innerText = "YOU WON! \n The match fills you with determination to keep moving forward!"
         } else {
-            result.innerText = "Dr.Fluffball WINS! \n Just like any setback like in life, we must keep moving forward!"
+            result.innerText = "DEFEAT! \n Things won't always go our way but that's ok! Take things slow, enjoy the journey, and keep moving forward :)"
         }
+        result.appendChild(rematchButton);
     }
 }
 
-//Plays 5 rounds to determine the winner & keeps tab of score
 function game() {
-
     buttons.forEach(button => button.addEventListener('click', playRound));
-
-
-    // if (playerWins < computerWins) {
-    //     console.log("Dr.Fluffball & his minions have won! We'll get em next time!");
-    // } else if (playerWins > computerWins) {
-    //     console.log("You triumph over Dr.Fluffball & his minions. Huzzah!!");
-    // } else {
-    //     console.log("Stalemate! A worthy opponent indeed, your next battle will be legendary!");
-    // }
 }
 
 game();
