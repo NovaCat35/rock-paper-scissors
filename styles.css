@@ -3,22 +3,71 @@
     pointer-events: none;
 }
 
-.scoreboard, .choices, .announcement{
+/* Popup score */
+.fadeIn {
+    opacity: 1;
+    transition: opacity 0.9s ease 0.3s;
+}
+.fadeOut {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+
+.scoreboard, .choices, .announcement {
     display: flex;
     justify-content: space-around;
 }
 
+.container {
+    border: 3px double black;
+    border-radius: 6px;
+    padding: 5em;
+    margin: 1.5em;
+}
+
+h1 {
+    text-align: center;
+}
+
+/* SCOREBOARD */
+.left, .right {
+    position: relative;
+    text-align: center;
+    border: 1px solid black;
+    padding: 10px;
+    height: 6.5em;
+    width: 13em;
+    margin: 1em;
+}
+h3 {
+    font-size: .8em;
+}
+.playerScore, .compScore {
+    font-size: 3em;
+    position: absolute;
+    top: 40%;
+    left: 45%;
+}
+
+/* RESULT CONTAINER */
 .result {
+    margin: 1em;
     text-align: center;
     display: flex;
     flex-direction: column;
 }
-
-.choices {
-    margin-top: 5em;
+.rematchBtn {
+    text-align: center;
+    padding: 5em;
+    margin: 1em;
 }
 
-/* FLIPPING CARDS */
+.choices {
+    margin-top: 2em;
+}
+
+/*** FLIPPING CARDS ***/
 .card {
     height: 300px;
     width: 200px;
@@ -50,7 +99,6 @@
     justify-content: center;    
     transform: rotateY(180deg);
 }
-
 /* Adjust inside contents (CARDS) */
 .card-front p {
     color: white;
@@ -72,3 +120,15 @@
 }
 
   
+@keyframes addScore {
+    0% {
+      transform: scale(1);
+    }
+    75% {
+      transform: scale(1.2);
+    }
+
+    100% {
+      transform: scale(1);
+    }
+}

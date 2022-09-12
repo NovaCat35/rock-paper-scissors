@@ -9,7 +9,8 @@ let compChoice = document.querySelector('.compChoice');
 let playerChoice = document.querySelector('.playerChoice');
 
 let rematchButton = document.createElement('button');
-rematchButton.innerText = "REMATCH?"
+rematchButton.textContent = "REMATCH?";
+rematchButton.classList.add("rematchBtn");
 rematchButton.addEventListener('click', rematch);
 
 
@@ -17,15 +18,17 @@ rematchButton.addEventListener('click', rematch);
 function getComputerChoice() {
     const options = ['rock', 'paper', 'scissor'];
     let choice = Math.floor(Math.random() * 3);
-    compChoice.innerText = `Dr.Fluffball chooses ${options[choice].toUpperCase()} !!`;
+    compChoice.textContent = `Dr.Fluffball chooses ${options[choice].toUpperCase()} !!`;
 
     return options[choice];
 }
 
 function getPlayerChoice(e) {
     let choice = e.target.id;
-    console.log(e.target);
-    playerChoice.innerText = `You choose ${choice.toUpperCase()}!!`
+    if(choice == '') {
+        choice = e.target.parentElement.id;
+    }
+    playerChoice.textContent = `You choose ${choice.toUpperCase()}!!`
 
     return choice;
 }
@@ -43,13 +46,24 @@ function activateButtons() {
 function rematch() {
     playerWins = 0;
     computerWins = 0;
-    playerScore.innerText = playerWins;
-    compScore.innerText = computerWins;
+    playerScore.textContent = playerWins;
+    compScore.textContent = computerWins;
 
-    result.innerText = "";
-    compChoice.innerText = "";
-    playerChoice.innerText = "";
+    result.textContent = "";
+    compChoice.textContent = "";
+    playerChoice.textContent = "";
     activateButtons();
+}
+
+function win() {
+    // remove animation after ending
+    playerScore.style.animation = 'addScore .5s';
+    playerScore.addEventListener('animationend', function () { this.style.animation = '' });
+}
+
+function lose() {
+    compScore.style.animation = 'addScore .5s';
+    compScore.addEventListener('animationend', function() { this.style.animation = '' });
 }
 
 
@@ -61,49 +75,55 @@ function playRound(e) {
     switch (computerChoice) {
         case 'rock':
             if (playerChoice == 'rock') {
-                result.innerText =  "It's a Tie!";
+                result.textContent =  "It's a Tie!";
             } else if (playerChoice == 'paper')  {
                 playerWins++;
-                result.innerText = "You Win! Paper beats Rock";
+                result.textContent = "You Win! Paper beats Rock";
+                win();
             } else {
                 computerWins++;
-                result.innerText = "You Lose! Rock beats Scissor";
+                result.textContent = "You Lose! Rock beats Scissor";
+                lose();
             }
             break;
         case 'paper':
             if (playerChoice == 'paper') {
-                result.innerText = "It's a Tie!";
+                result.textContent = "It's a Tie!";
             } else if (playerChoice == 'scissor')  {
                 playerWins++;
-                result.innerText = "You Win! Scissor beats Paper";
+                result.textContent = "You Win! Scissor beats Paper";
+                win();
             } else {
                 computerWins++;
-                result.innerText = "You Lose! Paper beats Rock";
+                result.textContent = "You Lose! Paper beats Rock";
+                lose();
             }
             break;
         case 'scissor':
             if (playerChoice == 'scissor') {
-                result.innerText = "It's a Tie!";
+                result.textContent = "It's a Tie!";
             } else if (playerChoice == 'rock')  {
                 playerWins++;
-                result.innerText = "You Win! Rock beats Scissor";
+                result.textContent = "You Win! Rock beats Scissor";
+                win();
             } else {
                 computerWins++;
-                result.innerText = "You Lose! Scissor beats Paper";
+                result.textContent = "You Lose! Scissor beats Paper";
+                lose();
             }
             break;
     }
 
-    playerScore.innerText = playerWins;
-    compScore.innerText = computerWins;
+    playerScore.textContent = playerWins;
+    compScore.textContent = computerWins;
     
     if(playerWins == 5 || computerWins == 5) {
         disableButtons();
 
         if(playerWins == 5) {
-            result.innerText = "YOU WON! \n The match fills you with determination to keep moving forward!"
+            result.textContent = "YOU WON! \n The match fills you with determination to keep moving forward!"
         } else {
-            result.innerText = "DEFEAT! \n Things won't always go our way but that's ok! Take things slow, enjoy the journey, and keep moving forward :)"
+            result.textContent = "DEFEAT! \n Things won't always go our way but that's ok! Take things slow, enjoy the journey, and keep moving forward :)"
         }
         result.appendChild(rematchButton);
     }
