@@ -131,6 +131,9 @@ h3 {
     justify-content: center;    
     transform: rotateY(180deg);
 }
+.card-back h1 {
+    color: rgb(241, 241, 241);
+}
 /* Adjust inside contents (CARDS) */
 .card-front p {
     color: white;
