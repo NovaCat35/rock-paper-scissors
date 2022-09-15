@@ -1,18 +1,14 @@
+:root {
+    --typewriterSpeed: 2s;
+}
+body {
+    background-color: rgb(219, 154, 88);
+}
+
 /* Disable div(Card Decks) */
 .disable-div {
     pointer-events: none;
 }
-
-/* Popup score */
-.fadeIn {
-    opacity: 1;
-    transition: opacity 0.9s ease 0.3s;
-}
-.fadeOut {
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
 
 .scoreboard, .choices, .announcement {
     display: flex;
@@ -20,18 +16,27 @@
 }
 
 .container {
-    border: 3px double black;
-    border-radius: 6px;
+    background-color: aliceblue;
+    border: 15px double black;
+    border-radius: 5em;
     padding: 5em;
-    margin: 1.5em;
+    margin: 2.5em;
 }
 
 h1 {
+    font-size: 2.5em;
     text-align: center;
+    color: rgb(220, 56, 23);
+    text-shadow: 1px 1px black;
+}
+
+.choices {
+    margin-top: 2em;
 }
 
 /* SCOREBOARD */
 .left, .right {
+    background-color: rgb(209, 198, 155);
     position: relative;
     text-align: center;
     border: 1px solid black;
@@ -49,22 +54,49 @@ h3 {
     top: 40%;
     left: 45%;
 }
+.floatUpScore {
+    opacity: 0;
+    transform: translateY(2rem);
+    animation: fadeInUp 2s ease forwards;
+    animation-iteration-count: 1;
+}
 
 /* RESULT CONTAINER */
 .result {
     margin: 1em;
-    text-align: center;
     display: flex;
     flex-direction: column;
+    align-items: center;
+}
+.result .text {
+    text-align: center;
+    font-size: 1.5em;
+    position: relative;
+}
+.text::before, 
+.text::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+.text::before {
+    background: aliceblue;
+    animation: typewriter var(--typewriterSpeed) steps(24) 1s forwards;
+}
+.text::after {
+    width: .125em;
+    background: black;
+    animation: 
+        typewriter var(--typewriterSpeed) steps(24) 1s forwards,
+        blink 750ms steps(24) infinite;
 }
 .rematchBtn {
     text-align: center;
     padding: 5em;
     margin: 1em;
-}
-
-.choices {
-    margin-top: 2em;
 }
 
 /*** FLIPPING CARDS ***/
@@ -129,6 +161,34 @@ h3 {
     }
 
     100% {
-      transform: scale(1);
+      transform: scale(1.1);
     }
 }
+
+
+/* The typing effect */
+@keyframes typewriter {
+    to {    
+        left: 100%;
+    }
+}
+@keyframes blink {
+    to {    
+        background: transparent;
+    }
+}
+  
+/* Fade up text */
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+
+
+
+
+  

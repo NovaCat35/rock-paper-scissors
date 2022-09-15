@@ -3,7 +3,8 @@ let computerWins = 0;
 
 let playerScore = document.querySelector('.playerScore');
 let compScore = document.querySelector('.compScore');
-let result = document.querySelector('.result');
+let result = document.querySelector('.result .text');
+let resultContainer = document.querySelector('.result');
 let buttons = document.querySelectorAll('.card-back');
 let compChoice = document.querySelector('.compChoice');
 let playerChoice = document.querySelector('.playerChoice');
@@ -34,11 +35,9 @@ function getPlayerChoice(e) {
 }
 
 function disableButtons() {
-    // buttons.forEach(button => button.disabled = true);
     buttons.forEach(button => button.classList.toggle('disable-div'));
 }
 function activateButtons() {
-    // buttons.forEach(button => button.disabled = false);
     buttons.forEach(button => button.classList.toggle('disable-div'));
     result.removeChild(rematchButton);
 }
@@ -56,18 +55,23 @@ function rematch() {
 }
 
 function win() {
-    // remove animation after ending
+    //remove floatUpScore from class
+    playerScore.classList.remove('floatUpScore');
     playerScore.style.animation = 'addScore .5s';
+    // remove animation after ending
     playerScore.addEventListener('animationend', function () { this.style.animation = '' });
 }
 
 function lose() {
+    //remove floatUpScore from class
+    compScore.classList.remove('floatUpScore');
     compScore.style.animation = 'addScore .5s';
+    // remove animation after ending
     compScore.addEventListener('animationend', function() { this.style.animation = '' });
 }
 
 
-// decides the winner base on the two choices 
+// decides the winner base on the two choices (Player & Computer)
 function playRound(e) {
     let playerChoice = getPlayerChoice(e);
     let computerChoice = getComputerChoice();
@@ -75,40 +79,40 @@ function playRound(e) {
     switch (computerChoice) {
         case 'rock':
             if (playerChoice == 'rock') {
-                result.textContent =  "It's a Tie!";
+                result.innerHTML =  "It's a Tie!";
             } else if (playerChoice == 'paper')  {
                 playerWins++;
-                result.textContent = "You Win! Paper beats Rock";
+                result.innerHTML = "You Win! <br> Paper beats Rock";
                 win();
             } else {
                 computerWins++;
-                result.textContent = "You Lose! Rock beats Scissor";
+                result.innerHTML = "You Lose! <br> Rock beats Scissor";
                 lose();
             }
             break;
         case 'paper':
             if (playerChoice == 'paper') {
-                result.textContent = "It's a Tie!";
+                result.innerHTML = "It's a Tie!";
             } else if (playerChoice == 'scissor')  {
                 playerWins++;
-                result.textContent = "You Win! Scissor beats Paper";
+                result.innerHTML = "You Win! <br> Scissor beats Paper";
                 win();
             } else {
                 computerWins++;
-                result.textContent = "You Lose! Paper beats Rock";
+                result.innerHTML = "You Lose! <br> Paper beats Rock";
                 lose();
             }
             break;
         case 'scissor':
             if (playerChoice == 'scissor') {
-                result.textContent = "It's a Tie!";
+                result.innerHTML = "It's a Tie!";
             } else if (playerChoice == 'rock')  {
                 playerWins++;
-                result.textContent = "You Win! Rock beats Scissor";
+                result.innerHTML = "You Win! <br> Rock beats Scissor";
                 win();
             } else {
                 computerWins++;
-                result.textContent = "You Lose! Scissor beats Paper";
+                result.innerHTML = "You Lose! <br> Scissor beats Paper";
                 lose();
             }
             break;
@@ -116,16 +120,19 @@ function playRound(e) {
 
     playerScore.textContent = playerWins;
     compScore.textContent = computerWins;
-    
+    // textLength = result.innerText.length;
+    // result.style.animation = `typewriter .5s steps(${textLength})`;
+    // result.addEventListener('animationend', function () { this.style.animation = '' });
+
     if(playerWins == 5 || computerWins == 5) {
         disableButtons();
 
         if(playerWins == 5) {
-            result.textContent = "YOU WON! \n The match fills you with determination to keep moving forward!"
+            result.innerHTML = "VICTORY! <br> The match fills you with determination to keep moving forward!"
         } else {
-            result.textContent = "DEFEAT! \n Things won't always go our way but that's ok! Take things slow, enjoy the journey, and keep moving forward :)"
+            result.innerHTML = "DEFEAT! <br> Things won't always go our way but that's ok! Take things slow, enjoy the journey, and keep moving forward :)"
         }
-        result.appendChild(rematchButton);
+        resultContainer.appendChild(rematchButton);
     }
 }
 
