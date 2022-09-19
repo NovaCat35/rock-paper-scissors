@@ -5,7 +5,7 @@ Learning about "Flipping cards" with 3d perspective and transform
 Animations in css and calling them from javascript file 
 Merging and deleting branches
 Javascript querySelectors and logic
-
+Pseudo elements in css (::before & ::after) and manipulating them from JS
 
 TO DO: 
 - show restart screen instead of append "restart"....use inset: 0;

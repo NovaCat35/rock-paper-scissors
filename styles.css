@@ -1,5 +1,7 @@
 :root {
     --typewriterSpeed: 1.5s;
+    --typingSteps: steps(20);
+    --typingDelay: 1s;
 }
 body {
     background-color: rgb(219, 154, 88);
@@ -97,16 +99,14 @@ h3 {
 }
 .animation::before {
     background: aliceblue;
-    animation: typewriter var(--typewriterSpeed) steps(24) 1s forwards;
+    animation: typewriter var(--typewriterSpeed) var(--typingSteps) var(--typingDelay) forwards;
 }
 .animation::after {
     width: 0;
     border-right: 2px solid black;
     animation: 
-        typewriter var(--typewriterSpeed) steps(20) 1s forwards,
+        typewriter var(--typewriterSpeed) var(--typingSteps) var(--typingDelay) forwards,
         blink .5s step-end infinite;
-    /* animation: 
-        typewriter var(--typewriterSpeed) steps(24) 1s forwards; */
 }
 .rematchBtn {
     text-align: center;

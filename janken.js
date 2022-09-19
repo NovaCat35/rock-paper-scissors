@@ -8,6 +8,7 @@ let resultContainer = document.querySelector('.result');
 let buttons = document.querySelectorAll('.card-back');
 let compChoice = document.querySelector('.compChoice');
 let playerChoice = document.querySelector('.playerChoice');
+let root =  document.querySelector(':root');
 
 // Create the contents for REMATCH BUTTON for later use
 let rematchButton = document.createElement('button');
@@ -15,7 +16,7 @@ rematchButton.textContent = "REMATCH?";
 rematchButton.classList.add("rematchBtn");
 rematchButton.addEventListener('click', rematch);
 
-// Remove the 1st animation played after animatione ends so we can can call it again in playRound()
+// Remove the 1st animation played after animations ends so we can can call it again in playRound()
 resultTxt.addEventListener('animationend', function () { 
     resultTxt.style.animation = '';
     resultTxt.classList.remove('animation');
@@ -82,7 +83,6 @@ function lose() {
 function playRound(e) {
     let playerChoice = getPlayerChoice(e);
     let computerChoice = getComputerChoice();
-    resultTxt.classList.add('animation');
 
     switch (computerChoice) {
         case 'rock':
@@ -128,8 +128,15 @@ function playRound(e) {
 
     playerScore.textContent = playerWins;
     compScore.textContent = computerWins;
+    let textLength = resultTxt.innerText.length;
 
-    // Remove animation so it can be reused in the start of this function (playRound())
+    // customize pseudo elements of animation & add animation
+    root.style.setProperty("--typewriterSpeed", "1.2s");
+    root.style.setProperty("--typingSteps", `steps(${textLength})`);
+    root.style.setProperty("--typingDelay", "0s");
+    resultTxt.classList.add('animation');
+
+    // Remove animation so it can be reused when we re-add animation
     resultTxt.addEventListener('animationend', function () { 
         resultTxt.style.animation = '';
         resultTxt.classList.remove('animation');
