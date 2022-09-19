@@ -3,23 +3,30 @@ let computerWins = 0;
 
 let playerScore = document.querySelector('.playerScore');
 let compScore = document.querySelector('.compScore');
-let result = document.querySelector('.result .text');
+let resultTxt = document.querySelector('.result .text');
 let resultContainer = document.querySelector('.result');
 let buttons = document.querySelectorAll('.card-back');
 let compChoice = document.querySelector('.compChoice');
 let playerChoice = document.querySelector('.playerChoice');
 
+// Create the contents for REMATCH BUTTON for later use
 let rematchButton = document.createElement('button');
 rematchButton.textContent = "REMATCH?";
 rematchButton.classList.add("rematchBtn");
 rematchButton.addEventListener('click', rematch);
+
+// Remove the 1st animation played after animatione ends so we can can call it again in playRound()
+resultTxt.addEventListener('animationend', function () { 
+    resultTxt.style.animation = '';
+    resultTxt.classList.remove('animation');
+});
 
 
 // Generates random number between 0 - 2 to represent rock, paper, and scissor
 function getComputerChoice() {
     const options = ['rock', 'paper', 'scissor'];
     let choice = Math.floor(Math.random() * 3);
-    compChoice.textContent = `Dr.Fluffball chooses ${options[choice].toUpperCase()} !!`;
+    compChoice.textContent = `Dr.Fluffball chooses ${options[choice].toUpperCase()}!!`;
 
     return options[choice];
 }
@@ -39,7 +46,7 @@ function disableButtons() {
 }
 function activateButtons() {
     buttons.forEach(button => button.classList.toggle('disable-div'));
-    result.removeChild(rematchButton);
+    resultContainer.removeChild(rematchButton);
 }
 
 function rematch() {
@@ -48,7 +55,7 @@ function rematch() {
     playerScore.textContent = playerWins;
     compScore.textContent = computerWins;
 
-    result.textContent = "";
+    resultTxt.textContent = "";
     compChoice.textContent = "";
     playerChoice.textContent = "";
     activateButtons();
@@ -75,44 +82,45 @@ function lose() {
 function playRound(e) {
     let playerChoice = getPlayerChoice(e);
     let computerChoice = getComputerChoice();
+    resultTxt.classList.add('animation');
 
     switch (computerChoice) {
         case 'rock':
             if (playerChoice == 'rock') {
-                result.innerHTML =  "It's a Tie!";
+                resultTxt.innerHTML =  "It's a Tie!";
             } else if (playerChoice == 'paper')  {
                 playerWins++;
-                result.innerHTML = "You Win! <br> Paper beats Rock";
+                resultTxt.innerHTML = "You Win! <br> Paper beats Rock";
                 win();
             } else {
                 computerWins++;
-                result.innerHTML = "You Lose! <br> Rock beats Scissor";
+                resultTxt.innerHTML = "You Lose! <br> Rock beats Scissor";
                 lose();
             }
             break;
         case 'paper':
             if (playerChoice == 'paper') {
-                result.innerHTML = "It's a Tie!";
+                resultTxt.innerHTML = "It's a Tie!";
             } else if (playerChoice == 'scissor')  {
                 playerWins++;
-                result.innerHTML = "You Win! <br> Scissor beats Paper";
+                resultTxt.innerHTML = "You Win! <br> Scissor beats Paper";
                 win();
             } else {
                 computerWins++;
-                result.innerHTML = "You Lose! <br> Paper beats Rock";
+                resultTxt.innerHTML = "You Lose! <br> Paper beats Rock";
                 lose();
             }
             break;
         case 'scissor':
             if (playerChoice == 'scissor') {
-                result.innerHTML = "It's a Tie!";
+                resultTxt.innerHTML = "It's a Tie!";
             } else if (playerChoice == 'rock')  {
                 playerWins++;
-                result.innerHTML = "You Win! <br> Rock beats Scissor";
+                resultTxt.innerHTML = "You Win! <br> Rock beats Scissor";
                 win();
             } else {
                 computerWins++;
-                result.innerHTML = "You Lose! <br> Scissor beats Paper";
+                resultTxt.innerHTML = "You Lose! <br> Scissor beats Paper";
                 lose();
             }
             break;
@@ -120,17 +128,21 @@ function playRound(e) {
 
     playerScore.textContent = playerWins;
     compScore.textContent = computerWins;
-    // textLength = result.innerText.length;
-    // result.style.animation = `typewriter .5s steps(${textLength})`;
-    // result.addEventListener('animationend', function () { this.style.animation = '' });
+
+    // Remove animation so it can be reused in the start of this function (playRound())
+    resultTxt.addEventListener('animationend', function () { 
+        resultTxt.style.animation = '';
+        resultTxt.classList.remove('animation');
+    });
+
 
     if(playerWins == 5 || computerWins == 5) {
         disableButtons();
 
         if(playerWins == 5) {
-            result.innerHTML = "VICTORY! <br> The match fills you with determination to keep moving forward!"
+            resultTxt.innerHTML = "VICTORY! <br> The match fills you with determination to keep moving forward!"
         } else {
-            result.innerHTML = "DEFEAT! <br> Things won't always go our way but that's ok! Take things slow, enjoy the journey, and keep moving forward :)"
+            resultTxt.innerHTML = "DEFEAT! <br> Things won't always go our way but that's ok! Take things slow, enjoy the journey, and keep moving forward :)"
         }
         resultContainer.appendChild(rematchButton);
     }

@@ -1,5 +1,5 @@
 :root {
-    --typewriterSpeed: 2s;
+    --typewriterSpeed: 1.5s;
 }
 body {
     background-color: rgb(219, 154, 88);
@@ -10,49 +10,60 @@ body {
     pointer-events: none;
 }
 
-.scoreboard, .choices, .announcement {
-    display: flex;
-    justify-content: space-around;
-}
-
 .container {
     background-color: aliceblue;
-    border: 15px double black;
+    border: 5px double black;
     border-radius: 5em;
     padding: 5em;
     margin: 2.5em;
+}
+
+.box {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.boxInfo {
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(255, 221, 0, 0.249);
+    border: 2px ridge;
+}
+
+.scoreboard, .choices, .announcement {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
 }
 
 h1 {
     font-size: 2.5em;
     text-align: center;
     color: rgb(220, 56, 23);
-    text-shadow: 1px 1px black;
+    text-shadow: 2px 1px black;
 }
 
 .choices {
     margin-top: 2em;
 }
 
-/* SCOREBOARD */
+
+/******* SCOREBOARD *******/
 .left, .right {
     background-color: rgb(209, 198, 155);
-    position: relative;
     text-align: center;
     border: 1px solid black;
-    padding: 10px;
     height: 6.5em;
     width: 13em;
-    margin: 1em;
+    margin: .5em;
 }
 h3 {
     font-size: .8em;
 }
 .playerScore, .compScore {
-    font-size: 3em;
-    position: absolute;
-    top: 40%;
-    left: 45%;
+    font-size: 3.5em;
+    top: 50%;
+    left: 50%;
 }
 .floatUpScore {
     opacity: 0;
@@ -61,7 +72,7 @@ h3 {
     animation-iteration-count: 1;
 }
 
-/* RESULT CONTAINER */
+/******* RESULT CONTAINER *******/
 .result {
     margin: 1em;
     display: flex;
@@ -73,8 +84,10 @@ h3 {
     font-size: 1.5em;
     position: relative;
 }
-.text::before, 
-.text::after {
+/* Typewriter */
+/* sets before & after to the same starting position */
+.animation::before, 
+.animation::after {
     content: '';
     position: absolute;
     top: 0;
@@ -82,16 +95,18 @@ h3 {
     bottom: 0;
     left: 0;
 }
-.text::before {
+.animation::before {
     background: aliceblue;
     animation: typewriter var(--typewriterSpeed) steps(24) 1s forwards;
 }
-.text::after {
-    width: .125em;
-    background: black;
+.animation::after {
+    width: 0;
+    border-right: 2px solid black;
     animation: 
-        typewriter var(--typewriterSpeed) steps(24) 1s forwards,
-        blink 750ms steps(24) infinite;
+        typewriter var(--typewriterSpeed) steps(20) 1s forwards,
+        blink .5s step-end infinite;
+    /* animation: 
+        typewriter var(--typewriterSpeed) steps(24) 1s forwards; */
 }
 .rematchBtn {
     text-align: center;
@@ -99,7 +114,7 @@ h3 {
     margin: 1em;
 }
 
-/*** FLIPPING CARDS ***/
+/******* FLIPPING CARDS *******/
 .card {
     height: 300px;
     width: 200px;
@@ -160,7 +175,7 @@ h3 {
       transform: scale(1);
     }
     75% {
-      transform: scale(1.2);
+      transform: scale(1.5);
     }
 
     100% {
@@ -176,8 +191,8 @@ h3 {
     }
 }
 @keyframes blink {
-    to {    
-        background: transparent;
+    50% {
+        border-color: transparent;
     }
 }
   
