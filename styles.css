@@ -1,9 +1,15 @@
+* {
+    box-sizing: border-box;
+}
+
 :root {
     --typewriterSpeed: 1.5s;
     --typingSteps: steps(20);
     --typingDelay: 1s;
 }
+
 body {
+    margin: 0;
     background-color: rgb(219, 154, 88);
 }
 
@@ -17,15 +23,15 @@ body {
     border: 5px double black;
     border-radius: 5em;
     padding: 5em;
-    margin: 2.5em;
+    margin: 1em 7em 2.5em;
 }
 
-.box {
+.infoContents {
     display: flex;
     justify-content: space-evenly;
 }
 
-.boxInfo {
+.infoBox {
     display: flex;
     flex-direction: column;
     background-color: rgba(255, 221, 0, 0.249);
@@ -47,6 +53,54 @@ h1 {
 
 .choices {
     margin-top: 2em;
+}
+
+/**** RESET PAGE ****/
+.resetPage {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: rgb(245, 237, 233);
+    background-color: rgba(0, 0, 0, 0.788);
+    inset: 0;
+    opacity: 0;
+    z-index: -1;
+}
+.resetPage.active{
+    opacity: 1;
+    z-index: 1;
+}
+.resetText {
+    position: relative;
+    color: white;
+    text-align: center;
+    font-size: 1.5em;
+}
+.animation2 {
+    animation: scaleUp 2s forwards;
+}
+/* .animation2::before, 
+.animation2::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+.animation2::before {
+    background-color: rgba(0, 0, 0, 0);
+    animation: typewriter 2.5s var(--typingSteps) var(--typingDelay) forwards;
+} */
+.rematchBtn {
+    font-size: 2em;
+    text-align: center;
+    background-color: rgb(114, 174, 226);
+    border-radius: 20px;
+    padding: 1em;
+    margin: 2em;
 }
 
 
@@ -73,6 +127,7 @@ h3 {
     animation: fadeInUp 2s ease forwards;
     animation-iteration-count: 1;
 }
+
 
 /******* RESULT CONTAINER *******/
 .result {
@@ -108,11 +163,7 @@ h3 {
         typewriter var(--typewriterSpeed) var(--typingSteps) var(--typingDelay) forwards,
         blink .5s step-end infinite;
 }
-.rematchBtn {
-    text-align: center;
-    padding: 5em;
-    margin: 1em;
-}
+
 
 /******* FLIPPING CARDS *******/
 .card {
@@ -204,7 +255,14 @@ h3 {
     }
 }
 
-
+@keyframes scaleUp {
+    0% {
+        transform: scale(1.0);
+    }
+    100% {
+        transform: scale(1.5);
+    }
+}
 
 
 

@@ -4,23 +4,25 @@ let computerWins = 0;
 let playerScore = document.querySelector('.playerScore');
 let compScore = document.querySelector('.compScore');
 let resultTxt = document.querySelector('.result .text');
-let resultContainer = document.querySelector('.result');
+let resetPage = document.querySelector('.resetPage');
+let resetText = document.querySelector('.resetText')
 let buttons = document.querySelectorAll('.card-back');
 let compChoice = document.querySelector('.compChoice');
 let playerChoice = document.querySelector('.playerChoice');
 let root =  document.querySelector(':root');
 
 // Create the contents for REMATCH BUTTON for later use
-let rematchButton = document.createElement('button');
+let rematchButton = document.createElement('div');
 rematchButton.textContent = "REMATCH?";
 rematchButton.classList.add("rematchBtn");
 rematchButton.addEventListener('click', rematch);
 
 // Remove the 1st animation played after animations ends so we can can call it again in playRound()
 resultTxt.addEventListener('animationend', function () { 
-    resultTxt.style.animation = '';
     resultTxt.classList.remove('animation');
 });
+// remove the 1st animation that ran when resetPage was hidden
+resetText.classList.remove('animation2');
 
 
 // Generates random number between 0 - 2 to represent rock, paper, and scissor
@@ -47,9 +49,15 @@ function disableButtons() {
 }
 function activateButtons() {
     buttons.forEach(button => button.classList.toggle('disable-div'));
-    resultContainer.removeChild(rematchButton);
+    resetPage.removeChild(rematchButton);
 }
 
+function showResetPage() {
+    resetPage.classList.toggle('active');
+    resetText.classList.add('animation2');
+}
+
+// RESETS ALL PROGRESS for rematch
 function rematch() {
     playerWins = 0;
     computerWins = 0;
@@ -59,6 +67,11 @@ function rematch() {
     resultTxt.textContent = "";
     compChoice.textContent = "";
     playerChoice.textContent = "";
+
+    // hide resetPage & reset its animation
+    resetPage.classList.toggle('active');
+    resetText.classList.remove('animation2');
+
     activateButtons();
 }
 
@@ -138,20 +151,19 @@ function playRound(e) {
 
     // Remove animation so it can be reused when we re-add animation
     resultTxt.addEventListener('animationend', function () { 
-        resultTxt.style.animation = '';
         resultTxt.classList.remove('animation');
     });
 
 
     if(playerWins == 5 || computerWins == 5) {
         disableButtons();
-
+        showResetPage();
         if(playerWins == 5) {
-            resultTxt.innerHTML = "VICTORY! <br> The match fills you with determination to keep moving forward!"
+            resetText.innerHTML = "VICTORY! <br> Thanks for playing, come again for another round!"
         } else {
-            resultTxt.innerHTML = "DEFEAT! <br> Things won't always go our way but that's ok! Take things slow, enjoy the journey, and keep moving forward :)"
+            resetText.innerHTML = "DEFEAT! <br> Things won't always go our way but that's ok. <br> The important thing is to keep moving forward !!"
         }
-        resultContainer.appendChild(rematchButton);
+        resetPage.appendChild(rematchButton);
     }
 }
 
