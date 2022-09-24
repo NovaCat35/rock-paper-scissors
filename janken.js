@@ -10,6 +10,8 @@ let buttons = document.querySelectorAll('.card-back');
 let compChoice = document.querySelector('.compChoice');
 let playerChoice = document.querySelector('.playerChoice');
 let root =  document.querySelector(':root');
+const scoreBell1 = document.querySelector('audio[data-sound="scoreBell1"]');
+const scoreBell2 = document.querySelector('audio[data-sound="scoreBell2"]');
 
 // Create the contents for REMATCH BUTTON for later use
 let rematchButton = document.createElement('div');
@@ -81,6 +83,9 @@ function win() {
     playerScore.style.animation = 'addScore .5s';
     // remove animation after ending
     playerScore.addEventListener('animationend', function () { this.style.animation = '' });
+
+    scoreBell1.currentTime = 0;
+    scoreBell1.play()
 }
 
 function lose() {
@@ -89,6 +94,9 @@ function lose() {
     compScore.style.animation = 'addScore .5s';
     // remove animation after ending
     compScore.addEventListener('animationend', function() { this.style.animation = '' });
+
+    scoreBell2.currentTime = 0;
+    scoreBell2.play()
 }
 
 
@@ -159,9 +167,9 @@ function playRound(e) {
         disableButtons();
         showResetPage();
         if(playerWins == 5) {
-            resetText.innerHTML = "VICTORY! <br> Thanks for playing, come again for another round!"
+            resetText.innerHTML = "<span class='victory'>VICTORY!</span> <br> Thanks for playing, come again for another round!"
         } else {
-            resetText.innerHTML = "DEFEAT! <br> Things won't always go our way but that's ok. <br> The important thing is to keep moving forward !!"
+            resetText.innerHTML = "<span class='defeat'>DEFEAT!</span> <br> Things won't always go our way but that's ok. <br> The important thing is to keep moving forward !!"
         }
         resetPage.appendChild(rematchButton);
     }
