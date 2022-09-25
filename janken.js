@@ -14,6 +14,8 @@ const scoreBell1 = document.querySelector('audio[data-sound="scoreBell1"]');
 const scoreBell2 = document.querySelector('audio[data-sound="scoreBell2"]');
 const victory = document.querySelector('audio[data-sound="victory"]');
 const defeat = document.querySelector('audio[data-sound="defeat"]');
+const typewriter1 = document.querySelector('audio[data-sound="typewriter1"]');
+const typewriter2 = document.querySelector('audio[data-sound="typewriter2"]');
 
 
 // Create the contents for REMATCH BUTTON for later use
@@ -25,10 +27,10 @@ rematchButton.addEventListener('click', rematch);
 // Remove the 1st animation played after animations ends so we can can call it again in playRound()
 resultTxt.addEventListener('animationend', function () { 
     resultTxt.classList.remove('animation');
+    typewriter1.load();
 });
 // remove the 1st animation that ran when resetPage was hidden
 resetText.classList.remove('animation2');
-
 
 // Generates random number between 0 - 2 to represent mouse, cat, and dog
 function getComputerChoice() {
@@ -109,11 +111,13 @@ function lose() {
 function playRound(e) {
     let playerChoice = getPlayerChoice(e);
     let computerChoice = getComputerChoice();
+    typewriter2.load();
 
     switch (computerChoice) {
         case 'mouse':
             if (playerChoice == 'mouse') {
                 resultTxt.innerHTML =  "It's a Tie!";
+                typewriter2.play();
             } else if (playerChoice == 'cat')  {
                 playerWins++;
                 resultTxt.innerHTML = "You Win! <br> Cat beats Mouse";
@@ -127,6 +131,7 @@ function playRound(e) {
         case 'cat':
             if (playerChoice == 'cat') {
                 resultTxt.innerHTML = "It's a Tie!";
+                typewriter2.play();
             } else if (playerChoice == 'dog')  {
                 playerWins++;
                 resultTxt.innerHTML = "You Win! <br> Dog beats Cat";
@@ -140,6 +145,7 @@ function playRound(e) {
         case 'dog':
             if (playerChoice == 'dog') {
                 resultTxt.innerHTML = "It's a Tie!";
+                typewriter2.play();
             } else if (playerChoice == 'mouse')  {
                 playerWins++;
                 resultTxt.innerHTML = "You Win! <br> Mouse beats Dog";
@@ -157,7 +163,7 @@ function playRound(e) {
     let textLength = resultTxt.innerText.length;
 
     // customize pseudo elements of animation & add animation
-    root.style.setProperty("--typewriterSpeed", "1.2s");
+    root.style.setProperty("--typewriter2Speed", "500ms");
     root.style.setProperty("--typingSteps", `steps(${textLength})`);
     root.style.setProperty("--typingDelay", "0s");
     resultTxt.classList.add('animation');
@@ -176,13 +182,14 @@ function playRound(e) {
             resetText.innerHTML = "<span class='victory'>VICTORY!</span> <br> Thanks for playing, come again for another round!"
         } else {
             defeat.play();
-            resetText.innerHTML = "<span class='defeat'>DEFEAT!</span> <br> Things didn't go our way this time. <br> Well, nothing else to do but to keep moving forward !!"
+            resetText.innerHTML = "<span class='defeat'>DEFEAT!</span> <br> Things didn't go our way this time. <br> Nothing we can do but to keep moving forward !!"
         }
         resetPage.appendChild(rematchButton);
     }
 }
 
 function game() {
+    typewriter1.play();
     buttons.forEach(button => button.addEventListener('click', playRound));
 }
 

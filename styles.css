@@ -104,6 +104,7 @@ h3 {
     line-height: 2em;
     font-size: 2.5vw;
     margin-top: 1.5em;
+    user-select: none;
 }
 .animation2 {
     animation: scaleUp 2s forwards;
@@ -219,12 +220,20 @@ h3 {
     user-select: none;
     background-color: rgb(131, 163, 183);
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;    
     transform: rotateY(180deg);
 }
 .card-back h1 {
+    font-size: 2.5em;
     color: rgb(241, 241, 241);
+    margin-bottom: 10px;
+}
+.card-back .shadow {
+    height: 80px;
+    width: 80px;
+    object-fit: contain;
 }
 /* Adjust inside contents (CARDS) */
 .card img {
