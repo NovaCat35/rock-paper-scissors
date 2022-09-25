@@ -12,6 +12,8 @@ body {
     margin: 0;
     background-color: rgb(219, 154, 88);
     font-family: 'Special Elite', cursive;
+    background-image: url(images/mountainVille.jpg);
+    background-size: cover;
 }
 
 /* Disable div(Card Decks) */
@@ -38,6 +40,7 @@ body {
     flex-direction: column;
     background-color: rgba(255, 221, 0, 0.249);
     border: 2px ridge;
+    width: 270px;
     padding: .5em;
 }
 
@@ -56,6 +59,11 @@ h1 {
 
 h3 { 
     font-family: 'Courier Prime', monospace;
+}
+
+.subtext {
+    text-align: center;
+    color: #23426b;
 }
 
 .choices {
@@ -101,6 +109,8 @@ h3 {
     animation: scaleUp 2s forwards;
 }
 .rematchBtn {
+    cursor: pointer;
+    user-select: none;
     font-size: 2em;
     text-align: center;
     background-color: rgb(114, 174, 226);
@@ -116,7 +126,8 @@ h3 {
 
 /******* SCOREBOARD *******/
 .left, .right {
-    background-color: rgb(209, 198, 155);
+    /* background-color: rgb(209, 198, 155); */
+    background-color: rgb(236 169 131);
     text-align: center;
     border: 1px solid black;
     height: 6.5em;
@@ -151,6 +162,7 @@ h3 {
     text-align: center;
     font-size: 1.5em;
     position: relative;
+    margin-top: .5em;
 }
 /* Typewriter */
 /* sets before & after to the same starting position */
@@ -181,6 +193,7 @@ h3 {
     height: 300px;
     width: 200px;
     perspective: 500px; 
+    margin-bottom: 10px;
 }
 .card-content {
     position: relative;
@@ -202,6 +215,8 @@ h3 {
     backface-visibility: hidden;
 }
 .card-back {
+    cursor: pointer;
+    user-select: none;
     background-color: rgb(131, 163, 183);
     display: flex;
     align-items: center;

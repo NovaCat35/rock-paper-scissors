@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rock, Paper, Scissor!</title>
+    <title>Mice, Cats, Dogs!</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&family=Press+Start+2P&family=Special+Elite&display=swap" rel="stylesheet">
 </head>
 <body>
-    <h1>ROCK, PAPER, SCISSOR!</h1>
+    <h1>MICE, CATS, & DOGS!</h1>
+    <p class="subtext">Another version of : ROCK, PAPER, SCISSOR!</p>
     <div class="container">
         <div class="infoContents">
             <div class = "infoBox">
@@ -46,10 +47,21 @@
             <div class="card">
                 <div class="card-content">
                     <div class="card-front">
+                        <img src="images/mouseGuard.jpeg" alt="iceberg">
+                    </div>
+                    <div class="card-back" id="mouse">
+                        <h1>Mouse</h1>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-front">
                         <img src="images/catPool.jpeg" alt="iceberg">
                     </div>
-                    <div class="card-back" id="rock">
-                        <h1>Rock</h1>
+                    <div class="card-back" id="cat">
+                        <h1>Cat</h1>
                     </div>
                 </div>
             </div>
@@ -57,28 +69,13 @@
             <div class="card">
                 <div class="card-content">
                     <div class="card-front">
-                        <img src="images/gintama.png" alt="iceberg">
+                        <img src="images/dogParade.jpeg" alt="iceberg">
                     </div>
-                    <div class="card-back" id="paper">
-                        <h1>Paper</h1>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-content">
-                    <div class="card-front">
-                        <img src="images/colonelMustang.png" alt="iceberg">
-                    </div>
-                    <div class="card-back" id="scissor">
-                        <h1>Scissor</h1>
+                    <div class="card-back" id="dog">
+                        <h1>Dog</h1>
                     </div>
                 </div>
             </div>
-
-            <!-- <button id="rock">Rock</button>
-            <button id="paper">Paper</button>
-            <button id="scissor">Scissor</button> -->
         </div>
     </div>
     <div class="resetPage">
@@ -87,6 +84,8 @@
     
     <audio data-sound="scoreBell1" src="sounds/bell_small_001.mp3"></audio>
     <audio data-sound="scoreBell2" src="sounds/coinRing.mp3"></audio>
+    <audio data-sound="victory" src="sounds/animalCrossing.mp3"></audio>
+    <audio data-sound="defeat" src="sounds/darkPit.mp3"></audio>
 
 
     <script src="janken.js"></script>

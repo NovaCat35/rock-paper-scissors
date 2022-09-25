@@ -12,6 +12,9 @@ let playerChoice = document.querySelector('.playerChoice');
 let root =  document.querySelector(':root');
 const scoreBell1 = document.querySelector('audio[data-sound="scoreBell1"]');
 const scoreBell2 = document.querySelector('audio[data-sound="scoreBell2"]');
+const victory = document.querySelector('audio[data-sound="victory"]');
+const defeat = document.querySelector('audio[data-sound="defeat"]');
+
 
 // Create the contents for REMATCH BUTTON for later use
 let rematchButton = document.createElement('div');
@@ -27,9 +30,9 @@ resultTxt.addEventListener('animationend', function () {
 resetText.classList.remove('animation2');
 
 
-// Generates random number between 0 - 2 to represent rock, paper, and scissor
+// Generates random number between 0 - 2 to represent mouse, cat, and dog
 function getComputerChoice() {
-    const options = ['rock', 'paper', 'scissor'];
+    const options = ['mouse', 'cat', 'dog'];
     let choice = Math.floor(Math.random() * 3);
     compChoice.textContent = `Dr.Fluffball chooses ${options[choice].toUpperCase()}!!`;
 
@@ -70,9 +73,11 @@ function rematch() {
     compChoice.textContent = "";
     playerChoice.textContent = "";
 
-    // hide resetPage & reset its animation
+    // hide resetPage, reset its animation, reload audio
     resetPage.classList.toggle('active');
     resetText.classList.remove('animation2');
+    victory.load();
+    defeat.load();
 
     activateButtons();
 }
@@ -106,42 +111,42 @@ function playRound(e) {
     let computerChoice = getComputerChoice();
 
     switch (computerChoice) {
-        case 'rock':
-            if (playerChoice == 'rock') {
+        case 'mouse':
+            if (playerChoice == 'mouse') {
                 resultTxt.innerHTML =  "It's a Tie!";
-            } else if (playerChoice == 'paper')  {
+            } else if (playerChoice == 'cat')  {
                 playerWins++;
-                resultTxt.innerHTML = "You Win! <br> Paper beats Rock";
+                resultTxt.innerHTML = "You Win! <br> Cat beats Mouse";
                 win();
             } else {
                 computerWins++;
-                resultTxt.innerHTML = "You Lose! <br> Rock beats Scissor";
+                resultTxt.innerHTML = "You Lose! <br> Mouse beats Dog";
                 lose();
             }
             break;
-        case 'paper':
-            if (playerChoice == 'paper') {
+        case 'cat':
+            if (playerChoice == 'cat') {
                 resultTxt.innerHTML = "It's a Tie!";
-            } else if (playerChoice == 'scissor')  {
+            } else if (playerChoice == 'dog')  {
                 playerWins++;
-                resultTxt.innerHTML = "You Win! <br> Scissor beats Paper";
+                resultTxt.innerHTML = "You Win! <br> Dog beats Cat";
                 win();
             } else {
                 computerWins++;
-                resultTxt.innerHTML = "You Lose! <br> Paper beats Rock";
+                resultTxt.innerHTML = "You Lose! <br> Cat beats Mouse";
                 lose();
             }
             break;
-        case 'scissor':
-            if (playerChoice == 'scissor') {
+        case 'dog':
+            if (playerChoice == 'dog') {
                 resultTxt.innerHTML = "It's a Tie!";
-            } else if (playerChoice == 'rock')  {
+            } else if (playerChoice == 'mouse')  {
                 playerWins++;
-                resultTxt.innerHTML = "You Win! <br> Rock beats Scissor";
+                resultTxt.innerHTML = "You Win! <br> Mouse beats Dog";
                 win();
             } else {
                 computerWins++;
-                resultTxt.innerHTML = "You Lose! <br> Scissor beats Paper";
+                resultTxt.innerHTML = "You Lose! <br> Dog beats Cat";
                 lose();
             }
             break;
@@ -167,9 +172,11 @@ function playRound(e) {
         disableButtons();
         showResetPage();
         if(playerWins == 5) {
+            victory.play();
             resetText.innerHTML = "<span class='victory'>VICTORY!</span> <br> Thanks for playing, come again for another round!"
         } else {
-            resetText.innerHTML = "<span class='defeat'>DEFEAT!</span> <br> Things won't always go our way but that's ok. <br> The important thing is to keep moving forward !!"
+            defeat.play();
+            resetText.innerHTML = "<span class='defeat'>DEFEAT!</span> <br> Things didn't go our way this time. <br> Well, nothing else to do but to keep moving forward !!"
         }
         resetPage.appendChild(rematchButton);
     }
