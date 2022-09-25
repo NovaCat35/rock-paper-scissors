@@ -14,7 +14,7 @@ const scoreBell1 = document.querySelector('audio[data-sound="scoreBell1"]');
 const scoreBell2 = document.querySelector('audio[data-sound="scoreBell2"]');
 const victory = document.querySelector('audio[data-sound="victory"]');
 const defeat = document.querySelector('audio[data-sound="defeat"]');
-const typewriter1 = document.querySelector('audio[data-sound="typewriter1"]');
+// const typewriter1 = document.querySelector('audio[data-sound="typewriter1"]');
 const typewriter2 = document.querySelector('audio[data-sound="typewriter2"]');
 
 
@@ -24,10 +24,10 @@ rematchButton.textContent = "REMATCH?";
 rematchButton.classList.add("rematchBtn");
 rematchButton.addEventListener('click', rematch);
 
+
 // Remove the 1st animation played after animations ends so we can can call it again in playRound()
 resultTxt.addEventListener('animationend', function () { 
     resultTxt.classList.remove('animation');
-    typewriter1.load();
 });
 // remove the 1st animation that ran when resetPage was hidden
 resetText.classList.remove('animation2');
@@ -163,7 +163,7 @@ function playRound(e) {
     let textLength = resultTxt.innerText.length;
 
     // customize pseudo elements of animation & add animation
-    root.style.setProperty("--typewriter2Speed", "500ms");
+    root.style.setProperty("--typewriterSpeed", "1s");
     root.style.setProperty("--typingSteps", `steps(${textLength})`);
     root.style.setProperty("--typingDelay", "0s");
     resultTxt.classList.add('animation');
@@ -189,7 +189,6 @@ function playRound(e) {
 }
 
 function game() {
-    typewriter1.play();
     buttons.forEach(button => button.addEventListener('click', playRound));
 }
 

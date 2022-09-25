@@ -15,7 +15,8 @@ Project Learning Goals:
 TO DO (near future?): 
 - MEDIA QUERY
 
--- SOURCE -- 
+-- SOURCES -- 
+
 Audio Source:
 https://www.zapsplat.com/
 https://downloads.khinsider.com/game-soundtracks/album/super-smash-bros.-ultimate-vol.-31-victory-themes-fanfares
