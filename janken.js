@@ -37,7 +37,7 @@ resetText.classList.remove('animation2');
 function getComputerChoice() {
     const options = ['mouse', 'cat', 'dog'];
     let choice = Math.floor(Math.random() * 3);
-    compChoice.innerHTML = `Dr.Fluffball chooses <br> ${options[choice].toUpperCase()}!!`;
+    compChoice.innerHTML = `Dr.Fluffball chooses <br> <span class="decision compDecision">${options[choice].toUpperCase()} !!</span>`;
     return options[choice];
 }
 
@@ -46,7 +46,7 @@ function getPlayerChoice(e) {
     if(choice == '') {
         choice = e.target.parentElement.id;
     }
-    playerChoice.innerHTML = `You choose <br> ${choice.toUpperCase()}!!`
+    playerChoice.innerHTML = `You choose <br> <span class="decision playerDecision">${choice.toUpperCase()} !!</span>`
 
     return choice;
 }
@@ -111,7 +111,9 @@ function lose() {
 function playRound(e) {
     let playerChoice = getPlayerChoice(e);
     let computerChoice = getComputerChoice();
+    
     typewriter2.load();
+    resultTxt.classList.remove('animation');
 
     switch (computerChoice) {
         case 'mouse':

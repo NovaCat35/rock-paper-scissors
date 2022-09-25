@@ -8,12 +8,13 @@
     --typingDelay: 1s;
 }
 
-body {
+html, body {
+    height: 100%;
     margin: 0;
     background-color: rgb(219, 154, 88);
-    font-family: 'Special Elite', cursive;
     background-image: url(images/mountainVille.jpg);
     background-size: cover;
+    font-family: 'Special Elite', cursive;
 }
 
 /* Disable div(Card Decks) */
@@ -70,11 +71,26 @@ h3 {
     margin-top: 2em;
 }
 
+.victory, .defeat {
+    font-size: 1.5em;
+}
 .victory {
     color: green;
 }
 .defeat {
     color: red;
+}
+
+.decision {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 1.5em;
+}
+.playerDecision {
+    text-shadow: 0px 0px 20px rgb(28, 206, 164), 0px 0px 40px rgb(28, 206, 164);
+}
+.compDecision {
+    text-shadow: 0px 0px 20px rgb(255, 55, 0), 0px 0px 40px rgb(255, 55, 0);
 }
 
 /* **************************************************** */
@@ -113,6 +129,7 @@ h3 {
     cursor: pointer;
     user-select: none;
     font-size: 2em;
+    text-shadow: 1.5px 1.5px black;
     text-align: center;
     background-color: rgb(114, 174, 226);
     border-radius: 20px;
@@ -191,6 +208,7 @@ h3 {
 
 /******* FLIPPING CARDS *******/
 .card {
+    position: relative;
     height: 300px;
     width: 200px;
     perspective: 500px; 
@@ -240,12 +258,18 @@ h3 {
 }
 /* Adjust inside contents (CARDS) */
 .card img {
+    user-select: none;
     height: 300px;
     width: 200px;
     object-fit: cover;
 }
+img.cardBorder{
+    height: 20em;
+    width: 12em;
+    position: absolute;
+    object-fit: contain;
+}
 
-  
 @keyframes addScore {
     0% {
       transform: scale(1);
