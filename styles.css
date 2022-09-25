@@ -204,7 +204,7 @@ h3 {
     transform-style: preserve-3d;
 }
 .card:hover .card-content {
-    transform: rotateY(180deg);
+    transform: rotateY(180deg) translateY(-15px);
 }
 .card-front, .card-back {
     border: 2px solid rgb(98, 131, 172);
@@ -225,6 +225,9 @@ h3 {
     justify-content: center;    
     transform: rotateY(180deg);
 }
+.card:active {
+    transform: translateY(-10px);
+}  
 .card-back h1 {
     font-size: 2.5em;
     color: rgb(241, 241, 241);

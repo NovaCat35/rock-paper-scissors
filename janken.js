@@ -10,6 +10,7 @@ let buttons = document.querySelectorAll('.card-back');
 let compChoice = document.querySelector('.compChoice');
 let playerChoice = document.querySelector('.playerChoice');
 let root =  document.querySelector(':root');
+
 const scoreBell1 = document.querySelector('audio[data-sound="scoreBell1"]');
 const scoreBell2 = document.querySelector('audio[data-sound="scoreBell2"]');
 const victory = document.querySelector('audio[data-sound="victory"]');
@@ -36,8 +37,7 @@ resetText.classList.remove('animation2');
 function getComputerChoice() {
     const options = ['mouse', 'cat', 'dog'];
     let choice = Math.floor(Math.random() * 3);
-    compChoice.textContent = `Dr.Fluffball chooses ${options[choice].toUpperCase()}!!`;
-
+    compChoice.innerHTML = `Dr.Fluffball chooses <br> ${options[choice].toUpperCase()}!!`;
     return options[choice];
 }
 
@@ -46,7 +46,7 @@ function getPlayerChoice(e) {
     if(choice == '') {
         choice = e.target.parentElement.id;
     }
-    playerChoice.textContent = `You choose ${choice.toUpperCase()}!!`
+    playerChoice.innerHTML = `You choose <br> ${choice.toUpperCase()}!!`
 
     return choice;
 }
