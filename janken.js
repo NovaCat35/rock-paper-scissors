@@ -72,13 +72,14 @@ function rematch() {
     playerScore.textContent = playerWins;
     compScore.textContent = computerWins;
 
-    resultTxt.textContent = "";
+    resultTxt.textContent = "Here we go again !";
     compChoice.textContent = "";
     playerChoice.textContent = "";
 
     // hide resetPage, reset its animation, reload audio
     resetPage.classList.toggle('active');
     resetText.classList.remove('animation2');
+    choices.classList.add('startingPosition');
     victory.load();
     defeat.load();
 

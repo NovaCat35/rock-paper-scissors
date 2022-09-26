@@ -10,7 +10,7 @@ https://novacat35.github.io/rock-paper-scissors/
 - Animations in css and calling them from javascript file 
 - Pseudo elements in css (::before & ::after), manipulating them from JS, and using setProperty
 - Calling audio & setting audio currentTime
-- Javascript querySelectors, addEventListener, setProperty and other logics
+- Javascript querySelectors, addEventListener, setProperty and other logics & css manipulation
 
 **TO DO (near future?):**
 - MEDIA QUERY
