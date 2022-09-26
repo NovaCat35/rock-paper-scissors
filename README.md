@@ -8,7 +8,8 @@ https://novacat35.github.io/rock-paper-scissors/
 **Project Learning Goals:**
 - Learned about "Flipping cards" with 3d perspective and transform
 - Animations in css and calling them from javascript file 
-- Pseudo elements in css (::before & ::after) and manipulating them from JS
+- Pseudo elements in css (::before & ::after), manipulating them from JS, and using setProperty
+- Calling audio & setting audio currentTime
 - Merging and deleting branches
 - Javascript querySelectors, addEventListener, setProperty and other logics
 
