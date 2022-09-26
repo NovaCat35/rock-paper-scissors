@@ -80,6 +80,7 @@ function rematch() {
     resetPage.classList.toggle('active');
     resetText.classList.remove('animation2');
     choices.classList.add('startingPosition');
+    resultTxt.classList.add('startingPosition');
     victory.load();
     defeat.load();
 
@@ -117,6 +118,7 @@ function playRound(e) {
     typewriter2.load();
     resultTxt.classList.remove('animation');
     choices.classList.remove('startingPosition');
+    resultTxt.classList.remove('startingPosition');
 
 
     switch (computerChoice) {

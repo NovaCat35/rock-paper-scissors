@@ -90,7 +90,7 @@ h3 {
 }
 
 .choices.startingPosition {
-    top: 15em;
+    top: 18em;
 }
 
 .victory, .defeat {
@@ -204,6 +204,9 @@ h3 {
     position: relative;
     margin-top: .5em;
 }
+.result .text.startingPosition {
+    margin-top: 2em;
+}
 /* Typewriter */
 /* sets before & after to the same starting position */
 .animation::before, 
@@ -286,8 +289,8 @@ h3 {
     object-fit: cover;
 }
 img.cardBorder{
-    height: 20em;
-    width: 12em;
+    /* height: 20em;
+    width: 12em; */
     position: absolute;
     object-fit: contain;
 }
