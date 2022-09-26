@@ -9,6 +9,7 @@ let resetText = document.querySelector('.resetText')
 let buttons = document.querySelectorAll('.card-back');
 let compChoice = document.querySelector('.compChoice');
 let playerChoice = document.querySelector('.playerChoice');
+let choices = document.querySelector('.choices');
 let root =  document.querySelector(':root');
 
 const scoreBell1 = document.querySelector('audio[data-sound="scoreBell1"]');
@@ -114,6 +115,8 @@ function playRound(e) {
     
     typewriter2.load();
     resultTxt.classList.remove('animation');
+    choices.classList.remove('startingPosition');
+
 
     switch (computerChoice) {
         case 'mouse':
