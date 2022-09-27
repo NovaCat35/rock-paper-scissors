@@ -5,6 +5,9 @@ This project used HTML, CSS, and Javascript to make a ROCK, PAPER, SCISSOR bot v
 Live server: 
 https://novacat35.github.io/rock-paper-scissors/
 
+<img width="1440" alt="Screen Shot 2022-09-26 at 11 29 39 PM" src="https://user-images.githubusercontent.com/54908064/192425481-d07d9302-bfdc-493c-9f5f-6d088fb902fe.png">
+
+
 **Project Learning Goals:**
 - Learned about "Flipping cards" with 3d perspective and transform
 - Animations in css and calling them from javascript file 
@@ -12,9 +15,7 @@ https://novacat35.github.io/rock-paper-scissors/
 - Calling audio & setting audio currentTime
 - Javascript querySelectors, addEventListener, setProperty and other logics & css manipulation
 
-**TO DO (near future?):**
-- MEDIA QUERY
-
+___
 ### -- SOURCE -- 
 
 Audio Source:
