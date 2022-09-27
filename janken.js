@@ -94,8 +94,8 @@ function win() {
     // remove animation after ending
     playerScore.addEventListener('animationend', function () { this.style.animation = '' });
 
-    scoreBell1.currentTime = 0;
-    scoreBell1.play()
+    scoreBell2.currentTime = 0;
+    scoreBell2.play()
 }
 
 function lose() {
@@ -105,8 +105,8 @@ function lose() {
     // remove animation after ending
     compScore.addEventListener('animationend', function() { this.style.animation = '' });
 
-    scoreBell2.currentTime = 0;
-    scoreBell2.play()
+    scoreBell1.currentTime = 0;
+    scoreBell1.play()
 }
 
 
