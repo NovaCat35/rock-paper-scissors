@@ -15,6 +15,9 @@ https://novacat35.github.io/rock-paper-scissors/
 - Calling audio & setting audio currentTime
 - Javascript querySelectors, addEventListener, setProperty and other logics & css manipulation
 
+TO DO (in the near future?)
+- Media query and responsive webpage
+
 ___
 ### -- SOURCE -- 
 

@@ -16,8 +16,7 @@ const scoreBell1 = document.querySelector('audio[data-sound="scoreBell1"]');
 const scoreBell2 = document.querySelector('audio[data-sound="scoreBell2"]');
 const victory = document.querySelector('audio[data-sound="victory"]');
 const defeat = document.querySelector('audio[data-sound="defeat"]');
-// const typewriter1 = document.querySelector('audio[data-sound="typewriter1"]');
-const typewriter2 = document.querySelector('audio[data-sound="typewriter2"]');
+const typewriter = document.querySelector('audio[data-sound="typewriter"]');
 
 
 // Create the contents for REMATCH BUTTON for later use
@@ -115,7 +114,7 @@ function playRound(e) {
     let playerChoice = getPlayerChoice(e);
     let computerChoice = getComputerChoice();
     
-    typewriter2.load();
+    typewriter.load();
     resultTxt.classList.remove('animation');
     choices.classList.remove('startingPosition');
     resultTxt.classList.remove('startingPosition');
@@ -125,7 +124,7 @@ function playRound(e) {
         case 'mouse':
             if (playerChoice == 'mouse') {
                 resultTxt.innerHTML =  "It's a Tie!";
-                typewriter2.play();
+                typewriter.play();
             } else if (playerChoice == 'cat')  {
                 playerWins++;
                 resultTxt.innerHTML = "You Win! <br> Cat beats Mouse";
@@ -139,7 +138,7 @@ function playRound(e) {
         case 'cat':
             if (playerChoice == 'cat') {
                 resultTxt.innerHTML = "It's a Tie!";
-                typewriter2.play();
+                typewriter.play();
             } else if (playerChoice == 'dog')  {
                 playerWins++;
                 resultTxt.innerHTML = "You Win! <br> Dog beats Cat";
@@ -153,7 +152,7 @@ function playRound(e) {
         case 'dog':
             if (playerChoice == 'dog') {
                 resultTxt.innerHTML = "It's a Tie!";
-                typewriter2.play();
+                typewriter.play();
             } else if (playerChoice == 'mouse')  {
                 playerWins++;
                 resultTxt.innerHTML = "You Win! <br> Mouse beats Dog";
