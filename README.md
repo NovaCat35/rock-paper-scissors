@@ -1,6 +1,6 @@
 # Rock-paper-scissors
 
-> This project used HTML/CSS, and JS to make a Rock,Paper,Scissor game. It was exciting to see this project go from a simple terminal program to making a full blown UI. Don't just take my word for it, check out what I created below!
+This project used HTML/CSS, and JS to make a Rock,Paper,Scissor game. It was exciting to see this project go from a simple terminal program to making a full blown UI. Don't just take my word for it, check out what I created below!
 
 Live server: 
 https://novacat35.github.io/rock-paper-scissors/
