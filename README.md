@@ -5,9 +5,10 @@ This project used HTML/CSS, and JS to make a Rock,Paper,Scissor game. It was exc
 Live server: 
 https://novacat35.github.io/rock-paper-scissors/
 
-<img width="1440" alt="Screen Shot 2022-09-26 at 11 29 39 PM" src="https://user-images.githubusercontent.com/54908064/192425481-d07d9302-bfdc-493c-9f5f-6d088fb902fe.png">
+<img width="1102" alt="Screenshot 2023-03-18 at 4 25 15 PM" src="https://user-images.githubusercontent.com/54908064/226136802-b6c6b051-f413-4dc0-81df-87cf48c210f6.png">
 
-> EDIT: After finishing up, I got a lot oof feed back on improvements on the future, so thank you everyone! 
+
+> EDIT: After finishing up, I got a lot of feedback on improvements from UI to responsiveness for future projects. Appreciate it! 
 
 
 ## Project Learning Goals:
