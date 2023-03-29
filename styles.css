@@ -373,6 +373,9 @@ img.cardBorder{
         flex-direction: column;
         gap: 20px;
     }
+    .choices.startingPosition {
+        top: 10px;
+    }
 }
 
   
